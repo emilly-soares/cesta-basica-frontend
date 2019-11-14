@@ -13,20 +13,20 @@ export default function Login({ history }) {
          const response = await api.post("/sessions", {
             email,
             password
-         })
+         });
+
          const { token } = response.data;
-         console.log(token);
 
          if (token) {
             localStorage.setItem("@CESTA/token", token);
          }
          history.push("/admin");
-      }
-      catch (erro) {
-         alert("Erro ao entrar");
+      } catch (error) {
+         // toast.error("Erro ao entrar");
+         console.log("Erro ao entrar", error)
+
       }
    }
-
    return (
       <Container>
          <div>

@@ -10,11 +10,12 @@ export default function Register({ history }) {
    async function handleSubmit(event) {
       event.preventDefault()
       try {
-         await api.post("/register", {
+         const result = await api.post("/users", {
             name,
             email,
             password
          })
+         console.log(result);
          history.push("/")
       } catch (erro) {
          alert("Usuário já existe");
